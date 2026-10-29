@@ -67,12 +67,12 @@
   $("#anio").textContent = new Date().getFullYear();
   pintar();
 
-  // Fondo de esporas: motas que flotan hacia arriba y hilos de micelio curvos entre las cercanas
+  // Fondo de esporas: motas sueltas que flotan despacio hacia arriba
   var c = $("#fondo"), g = c.getContext("2d"), pts = [];
   function medir() {
     c.width = innerWidth; c.height = innerHeight;
     pts = Array.from({ length: Math.round(innerWidth * innerHeight / 9000) }, function () {
-      return { x: Math.random() * c.width, y: Math.random() * c.height, v: .08 + Math.random() * .22,
+      return { x: Math.random() * c.width, y: Math.random() * c.height, v: .03 + Math.random() * .09,
                r: .6 + Math.random() * 1.8, f: Math.random() * 6.3, s: Math.random() * 6.3 };
     });
   }
@@ -80,20 +80,13 @@
     g.clearRect(0, 0, c.width, c.height);
     c.style.color = "var(--espora)";   // el color computado ya resuelve light-dark(); la variable en crudo no
     var col = getComputedStyle(c).color;
-    g.fillStyle = g.strokeStyle = col; g.lineWidth = .6;
-    pts.forEach(function (p, i) {
-      p.y -= p.v; p.x += Math.sin(t / 2500 + p.s) * .15;
+    g.fillStyle = col;
+    pts.forEach(function (p) {
+      p.y -= p.v; p.x += Math.sin(t / 4000 + p.s) * .08;
       if (p.y < -5) { p.y = c.height + 5; p.x = Math.random() * c.width; }
-      var tw = .5 + .5 * Math.sin(t / 1200 + p.f);
+      var tw = .5 + .5 * Math.sin(t / 2000 + p.f);
       g.globalAlpha = .08 + tw * .1; g.beginPath(); g.arc(p.x, p.y, p.r * 4, 0, 7); g.fill();
       g.globalAlpha = .35 + tw * .4; g.beginPath(); g.arc(p.x, p.y, p.r, 0, 7); g.fill();
-      for (var j = i + 1; j < pts.length; j++) {
-        var q = pts[j], d = Math.hypot(p.x - q.x, p.y - q.y);
-        if (d < 110) {
-          g.globalAlpha = (1 - d / 110) * .22; g.beginPath(); g.moveTo(p.x, p.y);
-          g.quadraticCurveTo((p.x + q.x) / 2 + Math.sin(p.s + q.s) * 18, (p.y + q.y) / 2 + Math.cos(p.s + q.s) * 18, q.x, q.y); g.stroke();
-        }
-      }
     });
     if (!matchMedia("(prefers-reduced-motion: reduce)").matches) requestAnimationFrame(dibujar);
   }
