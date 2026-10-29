@@ -1,18 +1,19 @@
 :root{
   color-scheme:light dark;
-  --fondo:light-dark(#f4f6fb,#0e1320);
-  --tarjeta:light-dark(#ffffff,#171e30);
-  --texto:light-dark(#1b2230,#e8ecf5);
-  --suave:light-dark(#5b6577,#9aa6bf);
-  --borde:light-dark(#dde3ee,#27314a);
-  --acento:light-dark(#3f5a99,#7b9bf0);
-  --acento2:light-dark(#5b7fd1,#a5bbff);
-  --sombra-c:light-dark(rgba(30,40,70,.07),rgba(0,0,0,.35));
+  --fondo:light-dark(#f4f6fb,#0c0c0b);
+  --tarjeta:light-dark(#ffffff,#151514);
+  --texto:light-dark(#1b2230,#e4e3de);
+  --suave:light-dark(#5b6577,#97968e);
+  --borde:light-dark(#dde3ee,#2a2a27);
+  --acento:light-dark(#3f5a99,#b2b088);
+  --acento2:light-dark(#5b7fd1,#d3d0a6);
+  --espora:light-dark(#7c8450,#b2b088);
+  --sombra-c:light-dark(rgba(30,40,70,.07),rgba(0,0,0,.5));
   --sombra:0 4px 14px var(--sombra-c);
-  --marco:light-dark(#e9edf6,#222c45);
-  --borde-marco:light-dark(#d3dae8,#3a4766);
-  --tinte:light-dark(rgba(63,90,153,.12),rgba(123,155,240,.16));
-  --sobre-acento:light-dark(#ffffff,#0e1320);
+  --marco:light-dark(#e9edf6,#1d1d1b);
+  --borde-marco:light-dark(#d3dae8,#33332f);
+  --tinte:light-dark(rgba(63,90,153,.12),rgba(178,176,136,.07));
+  --sobre-acento:light-dark(#ffffff,#121211);
   --r-s:6px;--r-m:10px;--r-l:14px;
 }
 :root[data-tema="claro"]{color-scheme:light}
@@ -21,7 +22,7 @@
 *{box-sizing:border-box}
 .oculto{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 body{margin:0;background:var(--fondo);color:var(--texto);font-family:"Segoe UI",system-ui,-apple-system,sans-serif;line-height:1.5}
-#fondo{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.6}
+#fondo{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.9}
 body::before{content:"";position:fixed;inset:-20%;z-index:-2;pointer-events:none;background:radial-gradient(40% 35% at 20% 25%,var(--tinte),transparent 70%),radial-gradient(35% 40% at 80% 70%,var(--tinte),transparent 70%)}
 a:focus-visible,button:focus-visible{outline:2px solid var(--acento);outline-offset:3px}
 
