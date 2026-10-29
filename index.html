@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mario · webs y apps gratuitas</title>
+<meta name="description" content="Webs y apps gratuitas de Mario, en el navegador, Windows y Android.">
+<meta name="theme-color" content="#f4f6fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1320" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="estilo.css">
+<script>try { var t = localStorage.getItem("tema"); if (t === "claro" || t === "oscuro") document.documentElement.dataset.tema = t; } catch (e) {}</script>
+</head>
+<body>
+<canvas id="fondo" aria-hidden="true"></canvas>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<header class="cabecera">
+  <button id="tema" class="tema" type="button" title="Automático, claro u oscuro">
+    <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18V4c4.41 0 8 3.59 8 8s-3.59 8-8 8z"/></svg>
+    <span class="oculto">Tema: </span><span id="tema-txt">Auto</span>
+  </button>
+  <a class="perfil" href="https://github.com/Kuerb0" target="_blank" rel="noopener" aria-label="Perfil de GitHub">
+    <img class="avatar" src="https://github.com/Kuerb0.png?size=200" alt="Foto de perfil" width="104" height="104"
+         onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'avatar sin',textContent:'M'}))">
+  </a>
+  <h1>Mario</h1>
+  <p class="lema">Sin datos, solo eres otra persona más dando su opinión.</p>
+  <p class="que-es">Webs y apps gratuitas para viajar, ahorrar y aprender estadística. <span id="recuento"></span></p>
+  <p class="enlaces"><a href="https://github.com/Kuerb0" target="_blank" rel="noopener">GitHub · Kuerb0</a></p>
+  <nav class="secciones" aria-label="Secciones">
+    <a href="#webs">Webs</a><a href="#apps">Apps</a><a href="#github">GitHub</a>
+  </nav>
+</header>
+
+<main id="contenido" tabindex="-1">
+  <div class="barra-buscar">
+    <div class="buscador">
+      <input id="q" type="search" placeholder="Buscar: vuelos, Excel, notas…" aria-label="Buscar proyectos" autocomplete="off">
+      <kbd>/</kbd>
+    </div>
+    <div class="filtros" role="group" aria-label="Filtrar por tipo">
+      <button type="button" data-f="todo" aria-pressed="true">Todo</button>
+      <button type="button" data-f="web" aria-pressed="false">Web</button>
+      <button type="button" data-f="windows" aria-pressed="false">Windows</button>
+      <button type="button" data-f="android" aria-pressed="false">Android</button>
+    </div>
+    <p class="contador" id="contador" aria-live="polite"></p>
+  </div>
+
+  <section id="webs"><h2>Webs interactivas</h2><ul class="rejilla" id="lista-webs"></ul></section>
+  <section id="apps"><h2>Apps (Windows y Android)</h2>
+    <p class="nota">Windows puede avisar al abrir un instalador porque no está firmado: pulsa «Más información» y luego «Ejecutar de todas formas».</p>
+    <ul class="rejilla" id="lista-apps"></ul></section>
+  <section id="github"><h2>Proyectos en GitHub</h2><ul class="rejilla" id="lista-github"></ul></section>
+  <p id="vacio" class="nota" hidden>Nada coincide con tu búsqueda.</p>
+</main>
+
+<footer class="pie">© <span id="anio"></span> Mario · hecho con GitHub Pages</footer>
+
+<script src="proyectos.js"></script>
+<script src="portal.js"></script>
+</body>
+</html>
